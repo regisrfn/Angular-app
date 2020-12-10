@@ -1,0 +1,20 @@
+@import  'palette_colors';
+
+$color-base:#9acd32;
+$color-top:#21a851;
+$color-top-dark:#1d9547;
+$color-black:black;
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+// SCREEN
+// Small devices (landscape phones, 576px and up)
+$SMALL-DEV:576px;
+
+// Medium devices (tablets, 768px and up)
+$MEDIUM-DEV:768px;
+
+// Large devices (desktops, 992px and up)
+$LARGE-DEV:992px;
+
+// Extra large devices (large desktops, 1200px and up)
+$EXTRA-LARGE-DEV:1200px;
