@@ -6,7 +6,19 @@ $color-top-dark:#1d9547;
 $color-black:black;
 // FONTS
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+$header-font: 'Montserrat', sans-serif;
+$header-color-logo:whitesmoke;
+$header-color-links:whitesmoke;
+$button-color-gradient:linear-gradient(
+    90deg,
+    rgba(153, 68, 184, 1) 0%,
+    rgba(63, 104, 217, 1) 50%,
+    rgba(63, 104, 217, 1) 60%,
+    rgba(153, 68, 184, 1) 100%
+);
 // SCREEN
+// Small devices (landscape phones, 576px and up)
+$EXTRA-SMALL-DEV:276px;
 // Small devices (landscape phones, 576px and up)
 $SMALL-DEV:576px;
 
