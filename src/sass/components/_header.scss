@@ -1,5 +1,7 @@
 // HEADER
 .header {
+    top: 0;
+    left: 0;
     &.scrollClass {
         background-color: $green-accent-4;
         .logo {
