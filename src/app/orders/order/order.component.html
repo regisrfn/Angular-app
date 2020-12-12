@@ -1,9 +1,8 @@
 <div class="order content">
     <form autocomplete="off" #form="ngForm" *ngIf="service.formData">
-        <div class="form-group">
-            <label for=""> Order No</label>
-            <input class="form-group__input" name="OrderNo" #OrderNo="ngModel" [(ngModel)]="service.formData.orderNo">
+        <div class="form-group" *ngFor="let item of service.formData | keyvalue;  trackBy:trackByFn">
+            <label for=""> {{formLabels[item.key]}}</label>
+            <input class="form-group__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]">
         </div>
     </form>
-    <h1>ORDER WORKS</h1>
 </div>
