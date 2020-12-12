@@ -1,0 +1,43 @@
+.order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > form {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem 2rem;
+        flex-wrap: wrap;
+        @media only screen and (max-width: $SMALL-DEV) {
+           flex-direction: column;
+        }
+
+        .form-content {
+            width: 50%;
+            @media only screen and (max-width: $SMALL-DEV) {
+                width: 100%;
+            }
+            display: flex;
+            padding: 2rem 3rem;
+
+            &:last-child {
+                margin-right: auto;
+            }
+        }
+
+        .form-item {
+            &__input {
+                width: 70%;
+            }
+
+            &__label {
+                font-family: $order-font;
+                font-size: 1.5rem;
+                letter-spacing: 0.1rem;
+                align-self: center;
+                width: 30%;
+            }
+        }
+    }
+}
