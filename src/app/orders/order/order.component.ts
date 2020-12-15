@@ -16,8 +16,8 @@ export class OrderComponent implements OnInit {
     orderId: "Order ID:",
     orderNo: "Order Nº:",
     customerId: "Customer Id:",
-    paymentMethod: "Payment",
-    totalValue: "Total Value"
+    paymentMethod: "Payment:",
+    totalValue: "Total Value:"
 
   }
 
