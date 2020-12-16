@@ -3,8 +3,9 @@
         <div class="form-content" *ngFor="let item of service.formData | keyvalue;  trackBy:trackByFn">
             <ng-container *ngIf="item.key==='customerId' || item.key==='paymentMethod';else templateName">
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
-                <select class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]">
-                    <option selected>-Select-</option>
+                <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="title[item.key]">
+                    <option *ngFor="let option of options[item.key];" [value]="option.id">{{option.id}}
+                    </option>
                 </select>
             </ng-container>
             <ng-template #templateName>
@@ -13,4 +14,5 @@
             </ng-template>
         </div>
     </form>
+    <H1>{{title.paymentMethod}}</H1>
 </div>

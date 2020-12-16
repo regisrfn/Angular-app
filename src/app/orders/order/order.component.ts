@@ -10,8 +10,6 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class OrderComponent implements OnInit {
 
-  constructor(public service: OrderService) { }
-
   formLabels = {
     orderId: "Order ID:",
     orderNo: "Order Nº:",
@@ -21,13 +19,39 @@ export class OrderComponent implements OnInit {
 
   }
 
+  title = {
+    customerId:"",
+    paymentMethod:""
+  };
+
+  options = {
+    customerId: [
+      { id: "--Select Client--" },
+      { id: "1" },
+      { id: "2" },
+      { id: "3" },
+      { id: "4" }
+    ],
+    paymentMethod: [
+      { id: "--Select Payment--" },
+      { id: "1" },
+      { id: "2" },
+      { id: "3" },
+      { id: "4" }
+    ]
+  }
+
+  constructor(public service: OrderService) {
+    this.title['customerId'] = this.options['customerId'][0]['id']
+    this.title['paymentMethod'] = this.options['paymentMethod'][0]['id']
+  }
+
   ngOnInit(): void {
     this.resetForm()
   }
 
   resetForm(form?: NgForm) {
-    if (form)
-      form.resetForm();
+    form?.resetForm();
     this.service.formData = {
       orderId: undefined,
       orderNo: uuidv4(),
@@ -39,7 +63,7 @@ export class OrderComponent implements OnInit {
   }
 
   trackByFn(index: any, item: any) {
-    return index;
+    return index
   }
 
 }
