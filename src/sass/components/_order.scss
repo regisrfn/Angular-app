@@ -10,7 +10,7 @@
         padding: 2rem 2rem;
         flex-wrap: wrap;
         @media only screen and (max-width: $SMALL-DEV) {
-           flex-direction: column;
+            flex-direction: column;
         }
 
         .form-content {
@@ -19,6 +19,7 @@
                 width: 100%;
             }
             display: flex;
+            align-items: center;
             padding: 2rem 3rem;
 
             &:last-child {
@@ -28,16 +29,24 @@
 
         .form-item {
             &__input {
-                width: 70%;
+                width: 60%;
             }
 
             &__label {
                 font-family: $order-font;
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 letter-spacing: 0.1rem;
-                align-self: center;
                 width: 30%;
             }
+            &__icon {
+                margin-right: 0.5rem;
+                width: 10%;
+                fill: $red-accent-3;
+            }
+        }
+
+        > button {
+            margin: 2rem 3rem;
         }
     }
 }
