@@ -25,6 +25,13 @@
             &:last-child {
                 margin-right: auto;
             }
+
+            > input:read-only {
+                padding: 0.5rem 1rem;
+                border: 1px solid;
+                border-radius: 3px;
+                background-color: $grey-lighten-5;
+            }
         }
 
         .form-item {
