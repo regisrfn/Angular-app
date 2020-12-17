@@ -2,6 +2,7 @@
     <form autocomplete="off" #form="ngForm" *ngIf="service.formData">
         <div class="form-content" *ngFor="let item of service.formData | keyvalue;  trackBy:trackByFn">
             <ng-container *ngIf="item.key==='customerId' || item.key==='paymentMethod';else templateName">
+                <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="title[item.key]">
                     <option *ngFor="let option of options[item.key];" [value]="option.id">{{option.id}}
@@ -9,6 +10,7 @@
                 </select>
             </ng-container>
             <ng-template #templateName>
+                <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <input class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]">
             </ng-template>

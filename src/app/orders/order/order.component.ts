@@ -19,6 +19,14 @@ export class OrderComponent implements OnInit {
 
   }
 
+  formIcons = {
+    orderId: '../../../assets/svg/user.svg',
+    orderNo: '../../../assets/svg/user.svg',
+    customerId: '../../../assets/svg/user.svg',
+    paymentMethod: '../../../assets/svg/cards.svg',
+    totalValue: '../../../assets/svg/user.svg'
+  }
+
   title = {
     customerId:"",
     paymentMethod:""
