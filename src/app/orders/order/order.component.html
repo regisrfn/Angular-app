@@ -1,4 +1,4 @@
-<div class="order content">
+<div class="order">
     <form autocomplete="off" #form="ngForm" *ngIf="service.formData">
         <div class="form-content" *ngFor="let item of service.formData | keyvalue;  trackBy:trackByFn">
             <ng-container *ngIf="item.key==='customerId' || item.key==='paymentMethod';else templateName">
@@ -12,9 +12,21 @@
             <ng-template #templateName>
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
-                <input class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]" [readonly]="item.key ===  'orderNo' || item.key ===  'totalValue'">
+                <input class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]"
+                    [readonly]="item.key ===  'orderNo' || item.key ===  'totalValue'">
             </ng-template>
         </div>
         <button>Submit</button>
     </form>
+    <table>
+        <thead>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th><button>Add item</button></th>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
