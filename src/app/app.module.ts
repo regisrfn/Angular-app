@@ -11,6 +11,7 @@ import { OrderItemsComponent } from './orders/order-items/order-items.component'
 import { OrderComponent } from './orders/order/order.component';
 import { HeaderComponent } from './header/header.component';
 import { OrderService } from './shared/order.service';
+import { PopUpOrderComponent } from './pop-up-order/pop-up-order.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OrderService } from './shared/order.service';
     OrdersComponent,
     OrderItemsComponent,
     OrderComponent,
-    HeaderComponent
+    HeaderComponent,
+    PopUpOrderComponent
   ],
   imports: [
     BrowserModule,
