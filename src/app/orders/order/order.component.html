@@ -5,7 +5,7 @@
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="title[item.key]">
-                    <option *ngFor="let option of options[item.key];" [value]="option.id">{{option.id}}
+                    <option *ngFor="let option of options[item.key];" [value]="option.userEmail">{{option.userEmail}}
                     </option>
                 </select>
             </ng-container>

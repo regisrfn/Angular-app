@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { CustomerService } from 'src/app/shared/customer.service';
 import { OrderService } from 'src/app/shared/order.service';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -28,34 +29,33 @@ export class OrderComponent implements OnInit {
   }
 
   title = {
-    customerId:"",
-    paymentMethod:""
+    customerId: "",
+    paymentMethod: ""
   };
 
   options = {
     customerId: [
-      { id: "--Select Client--" },
-      { id: "1" },
-      { id: "2" },
-      { id: "3" },
-      { id: "4" }
+      { userEmail: "--Select Client--" },
     ],
     paymentMethod: [
-      { id: "--Select Payment--" },
-      { id: "1" },
-      { id: "2" },
-      { id: "3" },
-      { id: "4" }
+      { userEmail: "--Select Payment--" },
+      { userEmail: "1" },
+      { userEmail: "2" },
+      { userEmail: "3" },
+      { userEmail: "4" }
     ]
   }
 
-  constructor(public service: OrderService) {
-    this.title['customerId'] = this.options['customerId'][0]['id']
-    this.title['paymentMethod'] = this.options['paymentMethod'][0]['id']
+  constructor(public service: OrderService, private customerService: CustomerService) {
+    this.title['customerId'] = this.options['customerId'][0]['userEmail']
+    this.title['paymentMethod'] = this.options['paymentMethod'][0]['userEmail']
   }
 
   ngOnInit(): void {
     this.resetForm()
+    this.customerService.getCustomersList()
+      .then(customersList => { this.options.customerId = this.options.customerId.concat(customersList as []) })
+      .then(() => console.log(this.options.customerId))
   }
 
   resetForm(form?: NgForm) {
