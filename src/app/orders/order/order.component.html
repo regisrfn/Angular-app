@@ -1,7 +1,16 @@
 <div class="order">
     <form autocomplete="off" #form="ngForm" *ngIf="service.formData">
         <div class="form-content" *ngFor="let item of service.formData | keyvalue;  trackBy:trackByFn">
-            <ng-container *ngIf="item.key==='customerId' || item.key==='paymentMethod';else templateName">
+            <ng-container *ngIf="item.key==='customerId'">
+                <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
+                <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
+                <input type="text" list="customerId" class="form-item__input" placeholder="Search" [(ngModel)]="title[item.key]" name="{{item.key}}"> 
+                <datalist [id]="item.key" class="form-item__input" name="customerId">
+                    <option *ngFor="let option of options[item.key];" [value]="option.userEmail">{{option.userEmail}}
+                    </option>
+                </datalist>
+            </ng-container>
+            <ng-container *ngIf="item.key==='paymentMethod'">
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="title[item.key]">
@@ -9,12 +18,12 @@
                     </option>
                 </select>
             </ng-container>
-            <ng-template #templateName>
+            <ng-container *ngIf="item.key !== 'paymentMethod' && item.key !== 'customerId'">
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <input class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]"
                     [readonly]="item.key ===  'orderNo' || item.key ===  'totalValue'">
-            </ng-template>
+            </ng-container>
         </div>
         <button>Submit</button>
     </form>

@@ -14,7 +14,7 @@ export class OrderComponent implements OnInit {
   formLabels = {
     orderId: "Order ID:",
     orderNo: "Order Nº:",
-    customerId: "Customer Id:",
+    customerId: "Customer email:",
     paymentMethod: "Payment:",
     totalValue: "Total Value:"
 
@@ -35,7 +35,7 @@ export class OrderComponent implements OnInit {
 
   options = {
     customerId: [
-      { userEmail: "--Select Client--" },
+      { userEmail: "" },
     ],
     paymentMethod: [
       { userEmail: "--Select Payment--" },
@@ -55,7 +55,6 @@ export class OrderComponent implements OnInit {
     this.resetForm()
     this.customerService.getCustomersList()
       .then(customersList => { this.options.customerId = this.options.customerId.concat(customersList as []) })
-      .then(() => console.log(this.options.customerId))
   }
 
   resetForm(form?: NgForm) {
