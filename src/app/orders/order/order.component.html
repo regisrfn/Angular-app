@@ -6,7 +6,7 @@
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <input type="text" list="customerId" class="form-item__input" placeholder="Search" [(ngModel)]="title[item.key]" name="{{item.key}}"> 
                 <datalist [id]="item.key" class="form-item__input" name="customerId">
-                    <option *ngFor="let option of options[item.key];" [value]="option.userEmail">{{option.userEmail}}
+                    <option *ngFor="let option of options[item.key];" [value]="option.customerEmail">{{option.customerEmail}}
                     </option>
                 </datalist>
             </ng-container>
@@ -14,7 +14,7 @@
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
                 <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="title[item.key]">
-                    <option *ngFor="let option of options[item.key];" [value]="option.userEmail">{{option.userEmail}}
+                    <option *ngFor="let option of options[item.key];" [value]="option.type">{{option.type}}
                     </option>
                 </select>
             </ng-container>

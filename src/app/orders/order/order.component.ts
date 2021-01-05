@@ -35,20 +35,20 @@ export class OrderComponent implements OnInit {
 
   options = {
     customerId: [
-      { userEmail: "" },
+      { customerEmail: "" },
     ],
     paymentMethod: [
-      { userEmail: "--Select Payment--" },
-      { userEmail: "1" },
-      { userEmail: "2" },
-      { userEmail: "3" },
-      { userEmail: "4" }
+      { type: "--Select Payment--" },
+      { type: "1" },
+      { type: "2" },
+      { type: "3" },
+      { type: "4" }
     ]
   }
 
   constructor(public service: OrderService, private customerService: CustomerService) {
-    this.title['customerId'] = this.options['customerId'][0]['userEmail']
-    this.title['paymentMethod'] = this.options['paymentMethod'][0]['userEmail']
+    this.title['customerId'] = this.options['customerId'][0]['customerEmail']
+    this.title['paymentMethod'] = this.options['paymentMethod'][0]['type']
   }
 
   ngOnInit(): void {
