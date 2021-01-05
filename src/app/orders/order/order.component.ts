@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Customer } from 'src/app/shared/customer.model';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { OrderService } from 'src/app/shared/order.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -19,7 +20,6 @@ export class OrderComponent implements OnInit {
     totalValue: "Total Value:"
 
   }
-
   formIcons = {
     orderId: '../../../assets/svg/user.svg',
     orderNo: '../../../assets/svg/user.svg',
@@ -28,27 +28,24 @@ export class OrderComponent implements OnInit {
     totalValue: '../../../assets/svg/user.svg'
   }
 
-  title = {
-    customerId: "",
+  selectedValue = {
+    customerId: undefined,
     paymentMethod: ""
   };
 
   options = {
-    customerId: [
-      { userEmail: "" },
-    ],
+    customerId:[{customerEmail:""}],
     paymentMethod: [
-      { userEmail: "--Select Payment--" },
-      { userEmail: "1" },
-      { userEmail: "2" },
-      { userEmail: "3" },
-      { userEmail: "4" }
+      { type: "--Select Payment--" },
+      { type: "1" },
+      { type: "2" },
+      { type: "3" },
+      { type: "4" }
     ]
   }
 
   constructor(public service: OrderService, private customerService: CustomerService) {
-    this.title['customerId'] = this.options['customerId'][0]['userEmail']
-    this.title['paymentMethod'] = this.options['paymentMethod'][0]['userEmail']
+    this.selectedValue['paymentMethod'] = this.options['paymentMethod'][0]['type']
   }
 
   ngOnInit(): void {

@@ -4,17 +4,21 @@
             <ng-container *ngIf="item.key==='customerId'">
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
-                <input type="text" list="customerId" class="form-item__input" placeholder="Search" [(ngModel)]="title[item.key]" name="{{item.key}}"> 
+                <input type="text" list="customerId" class="form-item__input" placeholder="Search"
+                    [(ngModel)]="selectedValue[item.key]" name="{{item.key}}">
                 <datalist [id]="item.key" class="form-item__input" name="customerId">
-                    <option *ngFor="let option of options[item.key];" [value]="option.userEmail">{{option.userEmail}}
-                    </option>
+                    <ng-container *ngFor="let option of options[item.key];">
+                        <option *ngIf="option.customerEmail !== ''" [value]="option.customerEmail">
+                            {{option.customerEmail}}
+                        </option>
+                    </ng-container>                   
                 </datalist>
             </ng-container>
             <ng-container *ngIf="item.key==='paymentMethod'">
                 <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                 <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
-                <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="title[item.key]">
-                    <option *ngFor="let option of options[item.key];" [value]="option.userEmail">{{option.userEmail}}
+                <select class="form-item__input" name="{{item.key}}" id="{{item.key}}" [(ngModel)]="selectedValue[item.key]">
+                    <option *ngFor="let option of options[item.key];" [value]="option.type">{{option.type}}
                     </option>
                 </select>
             </ng-container>

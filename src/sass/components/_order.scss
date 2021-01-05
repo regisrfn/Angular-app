@@ -37,7 +37,7 @@
 
         .form-item {
             &__input {
-                width: 60%;
+                width: 65%;
             }
 
             &__label {
@@ -48,7 +48,7 @@
             }
             &__icon {
                 margin-right: 0.5rem;
-                width: 10%;
+                width: 3rem;
                 fill: $red-accent-3;
             }
         }
