@@ -14,28 +14,28 @@ export class OrderComponent implements OnInit {
 
   formLabels = {
     orderId: "Order ID:",
-    orderNo: "Order Nº:",
+    orderNumber: "Order Nº:",
     customerId: "Customer email:",
-    paymentMethod: "Payment:",
-    totalValue: "Total Value:"
+    orderPaymentMethod: "Payment:",
+    orderTotalValue: "Total Value:"
 
   }
   formIcons = {
     orderId: '../../../assets/svg/user.svg',
-    orderNo: '../../../assets/svg/user.svg',
+    orderNumber: '../../../assets/svg/user.svg',
     customerId: '../../../assets/svg/user.svg',
-    paymentMethod: '../../../assets/svg/cards.svg',
-    totalValue: '../../../assets/svg/user.svg'
+    orderPaymentMethod: '../../../assets/svg/cards.svg',
+    orderTotalValue: '../../../assets/svg/user.svg'
   }
 
   selectedValue = {
     customerId: undefined,
-    paymentMethod: ""
+    orderPaymentMethod: ""
   };
 
   options = {
     customerId:[{customerEmail:""}],
-    paymentMethod: [
+    orderPaymentMethod: [
       { type: "--Select Payment--" },
       { type: "1" },
       { type: "2" },
@@ -45,7 +45,7 @@ export class OrderComponent implements OnInit {
   }
 
   constructor(public service: OrderService, private customerService: CustomerService) {
-    this.selectedValue['paymentMethod'] = this.options['paymentMethod'][0]['type']
+    this.selectedValue['orderPaymentMethod'] = this.options['orderPaymentMethod'][0]['type']
   }
 
   ngOnInit(): void {
@@ -57,12 +57,12 @@ export class OrderComponent implements OnInit {
   resetForm(form?: NgForm) {
     form?.resetForm();
     this.service.formData = {
-      orderId: undefined,
-      orderNo: uuidv4(),
+      orderId:  uuidv4(),
+      orderNumber: Math.floor((100000+Math.random()*900000)),
       customerId: undefined,
-      paymentMethod: undefined,
-      totalValue: undefined
-
+      orderPaymentMethod: undefined,
+      orderTotalValue: 24.90,
+      orderCreatedAt:undefined,
     }
   }
 
