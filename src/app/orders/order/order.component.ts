@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Customer } from 'src/app/shared/customer.model';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { OrderService } from 'src/app/shared/order.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -34,17 +33,17 @@ export class OrderComponent implements OnInit {
   };
 
   options = {
-    customerId:[{customerEmail:""}],
+    customerId: [{ customerEmail: "", customerId: "" }],
     orderPaymentMethod: [
       { type: "--Select Payment--" },
-      { type: "1" },
-      { type: "2" },
+      { type: "Card" },
+      { type: "Cash" },
       { type: "3" },
       { type: "4" }
     ]
   }
 
-  constructor(public service: OrderService, private customerService: CustomerService) {
+  constructor(public service: OrderService, private customerService: CustomerService, private orderService: OrderService) {
     this.selectedValue['orderPaymentMethod'] = this.options['orderPaymentMethod'][0]['type']
   }
 
@@ -54,16 +53,36 @@ export class OrderComponent implements OnInit {
       .then(customersList => { this.options.customerId = this.options.customerId.concat(customersList as []) })
   }
 
+  selectClient(obj: EventTarget | null) {
+    let value = (obj as HTMLInputElement).value
+    let customerSelected = this.options.customerId.filter(customer => customer.customerEmail === value)[0]
+    this.service.formData.customerId = customerSelected.customerId
+  }
+
+  selectPaymentMethod() {
+    if (this.selectedValue.orderPaymentMethod === this.options['orderPaymentMethod'][0]['type'])
+      this.service.formData.orderPaymentMethod = undefined
+    else {
+      this.service.formData.orderPaymentMethod = this.selectedValue.orderPaymentMethod
+    }
+  }
+
   resetForm(form?: NgForm) {
     form?.resetForm();
     this.service.formData = {
-      orderId:  uuidv4(),
-      orderNumber: Math.floor((100000+Math.random()*900000)),
+      orderId: uuidv4(),
+      orderNumber: Math.floor((100000 + Math.random() * 900000)),
       customerId: undefined,
       orderPaymentMethod: undefined,
       orderTotalValue: 24.90,
-      orderCreatedAt:undefined,
+      orderCreatedAt: undefined,
     }
+  }
+
+  saveOrder() {
+    this.orderService.save(this.service.formData)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
   }
 
   trackByFn(index: any, item: any) {
