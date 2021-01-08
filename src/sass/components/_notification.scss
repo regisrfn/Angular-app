@@ -1,7 +1,10 @@
 .notification {
     z-index: 3;
     &.show {
+        opacity: 1;
+        visibility: visible;
         animation: show_slide 1s ease forwards;
+        transition: none;
     }
     &.alert {
         background-color: $notification-alert;
@@ -15,6 +18,9 @@
         margin-left: 1rem;
     }
 
+    transition: opacity 2s, visibility 2s;
+    opacity: 0 ;
+    visibility: hidden;
     border-left: 0.6rem solid $green;
     font-size: 1.5rem;
     display: flex;
@@ -26,6 +32,7 @@
     margin-right: 2rem;
     position: absolute;
     right: 0;
+    bottom: 5rem;
 
     &__msg {
         font-weight: bold;
@@ -51,7 +58,7 @@
     40% {
         transform: translateX(-10%);
     }
-    90% {
+    80% {
         transform: translateX(5%);
     }
 

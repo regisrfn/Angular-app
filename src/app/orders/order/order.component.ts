@@ -10,6 +10,9 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class OrderComponent implements OnInit {
 
+  isOrderCreated = false
+  message: string = ""
+
   formLabels = {
     orderId: "Order ID:",
     orderNumber: "Order Nº:",
@@ -79,9 +82,14 @@ export class OrderComponent implements OnInit {
   }
 
   saveOrder() {
+    this.isOrderCreated=false
     this.orderService.save(this.service.formData)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+      .then(res => {
+        this.isOrderCreated = true
+        this.message = "Order has been successfully created"
+      })
+      .catch(err => console.log(err))
+
   }
 
   trackByFn(index: any, item: any) {

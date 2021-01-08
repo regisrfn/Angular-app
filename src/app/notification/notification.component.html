@@ -1,7 +1,8 @@
 <div>
-    <div class="notification successfully show">
+    <div *ngIf="value === 'successfully'" class="notification successfully" [ngClass] = "{'show':show}">
         <div class="notification__icon" [inlineSVG]="'../../assets/svg/check.svg'"></div>
-        <span class="notification__msg">Successfully: This is a notification message</span>
+        <span class="notification__msg">Successfully: {{msg}}</span>
+        <ng-content></ng-content>
         <svg id="Capa_1" class="close-btn" enable-background="new 0 0 512.001 512.001" height="512" viewBox="0 0 512.001 512.001" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m512.001 84.853-84.853-84.853-171.147 171.147-171.148-171.147-84.853 84.853 171.148 171.147-171.148 171.148 84.853 84.853 171.148-171.147 171.147 171.147 84.853-84.853-171.148-171.148z"/></g></svg>
     </div>
 </div>
