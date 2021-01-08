@@ -7,7 +7,6 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders/orders.component';
-import { OrderItemsComponent } from './orders/order-items/order-items.component';
 import { OrderComponent } from './orders/order/order.component';
 import { HeaderComponent } from './header/header.component';
 import { OrderService } from './shared/order.service';
@@ -18,7 +17,6 @@ import { NotificationComponent } from './notification/notification.component';
   declarations: [
     AppComponent,
     OrdersComponent,
-    OrderItemsComponent,
     OrderComponent,
     HeaderComponent,
     PopUpOrderComponent,

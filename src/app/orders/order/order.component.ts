@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.sass']
 })
 export class OrderComponent implements OnInit {
 
