@@ -6,12 +6,23 @@
         animation: show_slide 1s ease forwards;
         transition: none;
     }
-    &.alert {
-        background-color: $notification-alert;
+    &.error {
+        color: $red-darken-4;
+        border-left: 0.6rem solid $red-accent-2;
+        .notification__icon {
+            width: 3rem;
+            fill: $red-accent-4;
+        }
+        background-color: $red-accent-1;
     }
     &.successfully {
+        border-left: 0.6rem solid $green;
         background-color: $notification-successfully;
         color: $white;
+        .notification__icon {
+            width: 3rem;
+            fill: $white;
+        }
     }
 
     > * {
@@ -21,7 +32,6 @@
     transition: opacity 2s, visibility 2s;
     opacity: 0 ;
     visibility: hidden;
-    border-left: 0.6rem solid $green;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
@@ -30,17 +40,12 @@
     min-height: 5rem;
     padding: 0.5rem 1rem;
     margin-right: 2rem;
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 5rem;
 
     &__msg {
         font-weight: bold;
-    }
-
-    &__icon {
-        width: 2rem;
-        fill: whitesmoke;
     }
 
     .close-btn {

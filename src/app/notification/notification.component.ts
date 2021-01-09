@@ -8,7 +8,7 @@ export class NotificationComponent implements OnInit {
 
   @Input() show = false
   @Input() msg = "This a notification message"
-  @Input() value = "successfully"
+  @Input() value = ""
 
   constructor() { }
 

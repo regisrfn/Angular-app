@@ -12,6 +12,7 @@ export class OrderComponent implements OnInit {
 
   isOrderCreated = false
   message: string = ""
+  msgType: string = ""
 
   formLabels = {
     orderId: "Order ID:",
@@ -82,13 +83,21 @@ export class OrderComponent implements OnInit {
   }
 
   saveOrder() {
-    this.isOrderCreated=false
+    this.isOrderCreated = false
+    this.message = ""
+    this.msgType = ""
+
     this.orderService.save(this.service.formData)
       .then(res => {
         this.isOrderCreated = true
-        this.message = "Order has been successfully created"
+        this.message = "Order has been created."
+        this.msgType = "successfully"
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        this.isOrderCreated = true
+        this.message = "Error on creating order."
+        this.msgType = "error"
+      })
 
   }
 
