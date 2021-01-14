@@ -21,9 +21,8 @@
     &__content {
         position: relative;
         flex-basis: 75%;
-        height: 50rem;
         background-color: $grey-lighten-5;
-        border-radius: 3px;
+        background-color: transparent;
 
         > a {
             position: absolute;
@@ -33,7 +32,7 @@
             .close-btn {
                 width: 2rem;
                 height: 2rem;
-                fill: $green-darken-1;
+                fill: $black;
 
                 &:hover {
                     fill: $red-accent-4;

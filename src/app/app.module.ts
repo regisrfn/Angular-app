@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { OrderService } from './shared/order.service';
 import { PopUpOrderComponent } from './pop-up-order/pop-up-order.component';
 import { NotificationComponent } from './notification/notification.component';
+import { ItemComponent } from './item/item.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotificationComponent } from './notification/notification.component';
     OrderComponent,
     HeaderComponent,
     PopUpOrderComponent,
-    NotificationComponent
+    NotificationComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

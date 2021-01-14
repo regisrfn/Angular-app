@@ -1,0 +1,27 @@
+<div class="item">
+    <div class="item-box">
+        <div class="left">
+            <div class="icon" [inlineSVG]="'../../assets/svg/shopping-cart.svg'"></div>
+        </div>
+        <div class="right">
+            <h2>Add Item</h2>
+            <input list="itemName" type="text" class="item__field" placeholder="Name"
+                (blur)="selectProduct($event.target)">
+            <datalist id="itemName" name="itemName">
+                <ng-container *ngFor="let product of productList;">
+                    <option *ngIf="product" [value]="product.productId">
+                        {{product.productName + ' '+ product.productBrand}}
+                    </option>
+                </ng-container>
+            </datalist>
+            <input type="text" class="item__field" placeholder="Price $" [(ngModel)]="formData.itemPrice">
+            <input type="text" class="item__field" placeholder="Quantity" [(ngModel)]="formData.itemQuantity">
+            <input type="text" class="item__field" placeholder="Code" [(ngModel)]="formData.itemCode">
+            <input type="text" class="item__field" placeholder="Discount" [(ngModel)]="formData.itemDescription">
+            <textarea type="text" class="item__field area" placeholder="Description $"
+                [(ngModel)]="formData.itemDescription"></textarea>
+
+            <button class="item__btn" (click)="saveItem()"> Save</button>
+        </div>
+    </div>
+</div>
