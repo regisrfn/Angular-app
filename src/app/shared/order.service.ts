@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Order } from './order.model';
 
 @Injectable({
@@ -12,6 +13,6 @@ export class OrderService {
   constructor(private http:HttpClient) { }
 
   save(order:Order){
-    return this.http.post("http://localhost:5000/api/v1/order",order).toPromise();
+    return this.http.post(environment.apiOrder,order).toPromise();
   }
 }

@@ -39,15 +39,20 @@ export class OrderComponent implements OnInit {
     customerId: [{ customerEmail: "", customerId: "" }],
     orderPaymentMethod: [
       { type: "--Select Payment--" },
-      { type: "Card" },
-      { type: "Cash" },
-      { type: "3" },
-      { type: "4" }
+      { type: "CREDIT_CARD" },
+      { type: "DEBIT_CARD" },
+      { type: "CASH" },
+      { type: "MOBILE" },
+      { type: "BANK_TRANSFER" }
     ]
   }
 
-  constructor(public service: OrderService, private customerService: CustomerService, private orderService: OrderService) {
+  constructor(public service: OrderService,
+    private customerService: CustomerService,
+    private orderService: OrderService) {
+
     this.selectedValue['orderPaymentMethod'] = this.options['orderPaymentMethod'][0]['type']
+    
   }
 
   ngOnInit(): void {
