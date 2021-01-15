@@ -37,7 +37,10 @@
 
         .form-item {
             &__input {
+                padding: 0.5rem 1rem;
                 width: 65%;
+                border: 2px solid rgba($grey-lighten-1, 1);
+                border-radius: 2px;
             }
 
             &__label {
@@ -76,7 +79,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #dddddd;
+            background-color:$grey-lighten-4;
         }
     }
 

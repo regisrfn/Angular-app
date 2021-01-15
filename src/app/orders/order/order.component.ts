@@ -84,7 +84,7 @@ export class OrderComponent implements OnInit {
       orderNumber: Math.floor((100000 + Math.random() * 900000)),
       customerId: undefined,
       orderPaymentMethod: undefined,
-      orderTotalValue: 24.90,
+      orderTotalValue: 0.0,
       orderCreatedAt: undefined,
     }
     this.service.itemList = []

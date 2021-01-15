@@ -6,7 +6,7 @@
             <label for="" class="form-item__label"> {{formLabels.customerId}}</label>
             <input type="text" list="customerId" class="form-item__input" placeholder="Search"
                 [(ngModel)]="selectedValue.customerId" name="customerId" (blur)="selectClient($event.target)">
-            <datalist id="customerId" class="form-item__input" name="customerId">
+            <datalist id="customerId" name="customerId">
                 <ng-container *ngFor="let option of options.customerId;">
                     <option *ngIf="option.customerEmail !== ''" [value]="option.customerEmail">
                         {{option.customerEmail}}

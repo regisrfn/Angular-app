@@ -26,6 +26,12 @@
             flex-direction: column;
             border-top-right-radius: 2rem;
             border-bottom-right-radius: 2rem;
+
+            span {
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+                font-weight: bolder;
+            }
         }
 
         .left {

@@ -6,6 +6,8 @@
         </div>
         <div class="right">
             <h2>Add Item</h2>
+            <span *ngIf="formData.productId !== undefined ">{{formData.itemName?.toUpperCase()}}</span>
+
             <input list="itemName" type="text" class="item__field" placeholder="Name"
                 (blur)="selectProduct($event.target)" [(ngModel)]="selectedItemId">
             <datalist id="itemName" name="itemName">
@@ -15,6 +17,7 @@
                     </option>
                 </ng-container>
             </datalist>
+            
             <input type="text" class="item__field" placeholder="Price $" [(ngModel)]="formData.itemPrice">
             <input type="text" class="item__field" placeholder="Quantity" [(ngModel)]="formData.itemQuantity">
             <input type="text" class="item__field" placeholder="Code" [(ngModel)]="formData.itemCode">
