@@ -1,3 +1,4 @@
+<!-- ITEM COMPONENT -->
 <div class="item">
     <div class="item-box">
         <div class="left">
@@ -6,7 +7,7 @@
         <div class="right">
             <h2>Add Item</h2>
             <input list="itemName" type="text" class="item__field" placeholder="Name"
-                (blur)="selectProduct($event.target)">
+                (blur)="selectProduct($event.target)" [(ngModel)]="selectedItemId">
             <datalist id="itemName" name="itemName">
                 <ng-container *ngFor="let product of productList;">
                     <option *ngIf="product" [value]="product.productId">
@@ -21,7 +22,10 @@
             <textarea type="text" class="item__field area" placeholder="Description $"
                 [(ngModel)]="formData.itemDescription"></textarea>
 
-            <button class="item__btn" (click)="saveItem()"> Save</button>
+            <button class="item__btn" (click)="saveItem()">
+                <a href="order#">Save</a>
+            </button>
         </div>
     </div>
 </div>
+<!-- ITEM COMPONENT -->

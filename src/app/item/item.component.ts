@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { Product } from '../shared/product.model';
 import { ProductService } from '../shared/product.service';
@@ -10,8 +10,10 @@ import { ProductService } from '../shared/product.service';
 })
 export class ItemComponent implements OnInit {
 
+  @Output() save: EventEmitter<Item> = new EventEmitter();
   productList: Product[] | undefined;
   formData = new Item
+  selectedItemId = ""
 
   constructor(productService: ProductService) {
 
@@ -26,13 +28,17 @@ export class ItemComponent implements OnInit {
     let value = (obj as HTMLInputElement).value
     let productSelected = this.productList?.filter(product => product.productId === value)[0]
     this.formData.productId = productSelected?.productId
+    this.formData.itemName = productSelected?.productName + ' '+ productSelected?.productBrand
   }
 
-  saveItem(){
-    
+  saveItem() {
+    console.log(this.formData)
+    this.save.emit(this.formData)
+    this.formData = new Item
+    this.selectedItemId = ""
   }
 
-  resetForm(){
+  resetForm() {
     this.formData = new Item
   }
 

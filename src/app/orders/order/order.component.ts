@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CustomerService } from 'src/app/shared/customer.service';
+import { Item } from 'src/app/shared/item.model';
+import { ItemService } from 'src/app/shared/item.service';
 import { OrderService } from 'src/app/shared/order.service';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -49,10 +51,10 @@ export class OrderComponent implements OnInit {
 
   constructor(public service: OrderService,
     private customerService: CustomerService,
-    private orderService: OrderService) {
+    public itemService: ItemService) {
 
     this.selectedValue['orderPaymentMethod'] = this.options['orderPaymentMethod'][0]['type']
-    
+
   }
 
   ngOnInit(): void {
@@ -85,6 +87,7 @@ export class OrderComponent implements OnInit {
       orderTotalValue: 24.90,
       orderCreatedAt: undefined,
     }
+    this.service.itemList = []
   }
 
   saveOrder() {
@@ -92,18 +95,28 @@ export class OrderComponent implements OnInit {
     this.message = ""
     this.msgType = ""
 
-    this.orderService.save(this.service.formData)
-      .then(res => {
+    let order = this.service.formData
+    let itemsList = this.service.itemList
+    let saveItem = this.itemService.saveItem
+
+    this.service.save(order)
+      .then(() => Promise.all(itemsList.map(saveItem, this.itemService)))
+      .then(() => {
         this.isOrderCreated = true
         this.message = "Order has been created."
         this.msgType = "successfully"
       })
-      .catch(err => {
+      .catch(err => {    
+        this.service.delete(order.orderId)   
         this.isOrderCreated = true
         this.message = "Error on creating order."
         this.msgType = "error"
       })
+  }
 
+  onAddItem(item: Item) {
+    item.orderId = this.service.formData.orderId
+    this.service.itemList.push(item)
   }
 
   trackByFn(index: any, item: any) {

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { Item } from '../shared/item.model';
 
 @Component({
   selector: 'app-pop-up-order',
@@ -6,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopUpOrderComponent implements OnInit {
 
-  constructor() { }
+  @Output() save: EventEmitter<Item> = new EventEmitter();
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSave(item: Item){
+    this.save.emit(item)
   }
 
 }

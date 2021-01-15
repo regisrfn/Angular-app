@@ -1,6 +1,6 @@
 <div class="popup" id="popup">
     <div class="popup__content">
-        <app-item></app-item>
+        <app-item (save)="onSave($event)"></app-item>
         <a href="order#">
             <div class="close-btn" [inlineSVG]="'../../assets/svg/close.svg'">
             </div>

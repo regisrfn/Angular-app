@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Item } from './item.model';
 import { Order } from './order.model';
 
 @Injectable({
@@ -9,10 +10,15 @@ import { Order } from './order.model';
 export class OrderService {
 
   formData: Order = new Order;
+  itemList: Item[] = [];
 
   constructor(private http:HttpClient) { }
 
   save(order:Order){
     return this.http.post(environment.apiOrder,order).toPromise();
+  }
+
+  delete(id:string | undefined){
+    return this.http.delete(environment.apiOrder+`/${id}`).toPromise()
   }
 }

@@ -1,8 +1,8 @@
 export class Order {
-   orderId:String | undefined;
-   orderTotalValue: Number | undefined;
-   orderPaymentMethod: String | undefined;
-   orderCreatedAt:String | undefined;
-   orderNumber: Number | undefined;
-   customerId:String | undefined;
+   orderId:string | undefined;
+   orderTotalValue: number | undefined;
+   orderPaymentMethod: string | undefined;
+   orderCreatedAt:string | undefined;
+   orderNumber: number | undefined;
+   customerId:string | undefined;
 }
