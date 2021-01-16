@@ -7,6 +7,8 @@ export const environment = {
   apiCustomer: "http://localhost:5010/api/v1/customer",
   apiProduct: "http://localhost:5020/api/v1/product",
   apiOrder:"http://localhost:5000/api/v1/order",
+  apiItem:"http://localhost:5000/api/v1/item",
+
 };
 
 /*

@@ -10,7 +10,7 @@
 
             <input list="itemName" type="text" class="item__field" placeholder="Name"
                 (blur)="selectProduct($event.target)" [(ngModel)]="selectedItemId">
-            <datalist id="itemName" name="itemName">
+            <datalist id="itemName">
                 <ng-container *ngFor="let product of productList;">
                     <option *ngIf="product" [value]="product.productId">
                         {{product.productName + ' '+ product.productBrand}}

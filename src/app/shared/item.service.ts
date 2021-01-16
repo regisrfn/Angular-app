@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Item } from './item.model';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class ItemService {
   constructor(private http:HttpClient) { }
 
   saveItem(item:Item){
-    return this.http.post("http://localhost:5030/api/v1/item",item).toPromise()
+    return this.http.post(environment.apiItem,item).toPromise()
   }
 
 }
