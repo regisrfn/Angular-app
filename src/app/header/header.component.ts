@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isActive = false;
+  isActive = false
+  isChecked = false
+  isClicked = false
+  addClassX = false
+
   handleScroll() {
     const scrollY = window.scrollY
     if (scrollY > 10) {
@@ -15,6 +19,22 @@ export class HeaderComponent implements OnInit {
     } else {
       document.getElementById("header")?.classList.remove("scrollClass")
       this.isActive = false
+    }
+  }
+
+  clicked(line: HTMLSpanElement) {
+    var vm = this;
+    const span = line;
+    this.isClicked = true;
+    this.addClassX = false;
+
+    span.onanimationend = () => {
+      {
+        vm.isClicked = false;
+        if (this.isChecked) {
+          this.addClassX = true;
+        }
+      }
     }
   }
 
