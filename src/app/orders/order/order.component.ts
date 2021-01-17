@@ -4,6 +4,7 @@ import { CustomerService } from 'src/app/shared/customer.service';
 import { Item } from 'src/app/shared/item.model';
 import { ItemService } from 'src/app/shared/item.service';
 import { OrderService } from 'src/app/shared/order.service';
+import { environment } from 'src/environments/environment';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -106,8 +107,10 @@ export class OrderComponent implements OnInit {
         this.message = "Order has been created."
         this.msgType = "successfully"
       })
-      .catch(err => {    
-        this.service.delete(order.orderId)   
+      .catch(err => {
+        if (err.url === environment.apiItem) {
+          this.service.delete(order.orderId)
+        }
         this.isOrderCreated = true
         this.message = "Error on creating order."
         this.msgType = "error"

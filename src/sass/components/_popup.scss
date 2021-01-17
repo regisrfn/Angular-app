@@ -20,7 +20,7 @@
 
     &__content {
         position: relative;
-        flex-basis: 75%;
+        flex-basis: 60%;
         background-color: $grey-lighten-5;
         background-color: transparent;
 
@@ -38,6 +38,13 @@
                     fill: $red-accent-4;
                 }
             }
+        }
+
+        @media only screen and (max-width: $MEDIUM-DEV) {
+            flex-basis: 75%;
+        }
+        @media only screen and (max-width: $SMALL-DEV) {
+            flex-basis: 90%;
         }
     }
 }

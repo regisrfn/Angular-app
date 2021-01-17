@@ -32,7 +32,6 @@ export class ItemComponent implements OnInit {
   }
 
   saveItem() {
-    console.log(this.formData)
     this.save.emit(this.formData)
     this.formData = new Item
     this.selectedItemId = ""
