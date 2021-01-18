@@ -37,7 +37,7 @@
             </ng-container>
         </ng-container>
 
-        <button (click)="saveOrder()">Submit</button>
+        <button (click)="saveOrder()" [disabled]="this.service.itemList.length===0">Submit</button>
     </form>
     <table>
         <thead>
