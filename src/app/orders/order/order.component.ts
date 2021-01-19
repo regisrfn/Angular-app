@@ -16,6 +16,8 @@ export class OrderComponent implements OnInit {
   isOrderCreated = false
   message: string = ""
   msgType: string = ""
+  item: Item | undefined
+  index = 0
 
   formLabels = {
     orderId: "Order ID:",
@@ -53,7 +55,6 @@ export class OrderComponent implements OnInit {
   constructor(public service: OrderService,
     private customerService: CustomerService,
     public itemService: ItemService) {
-
     this.selectedValue['orderPaymentMethod'] = this.options['orderPaymentMethod'][0]['type']
 
   }
@@ -117,9 +118,26 @@ export class OrderComponent implements OnInit {
       })
   }
 
-  onAddItem(item: Item) {
-    item.orderId = this.service.formData.orderId
-    this.service.itemList.push(item)
+  onAddItem(el: { item: Item, op: number }) {
+    el.item.orderId = this.service.formData.orderId
+
+    switch (el.op) {
+      case 0:
+        this.service.itemList.push(el.item)
+        break;
+      case 1:
+        this.service.itemList[this.index] = el.item
+        this.item = undefined
+        break;
+      default:
+        break;
+    }
+
+  }
+
+  editItem(index: number) {
+    this.index = index
+    this.item = this.service.itemList[index]
   }
 
   trackByFn(index: any, item: any) {

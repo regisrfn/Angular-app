@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Item } from '../shared/item.model';
 import { Product } from '../shared/product.model';
 import { ProductService } from '../shared/product.service';
@@ -10,9 +10,12 @@ import { ProductService } from '../shared/product.service';
 })
 export class ItemComponent implements OnInit {
 
-  @Output() save: EventEmitter<Item> = new EventEmitter();
-  productList: Product[] | undefined;
+  @Output() save: EventEmitter<{ item: Item, op: number }> = new EventEmitter();
+  @Input() newFormData: Item | undefined
   formData = new Item
+  operation = 0
+
+  productList: Product[] | undefined;
   selectedItemId = ""
 
   constructor(productService: ProductService) {
@@ -28,13 +31,14 @@ export class ItemComponent implements OnInit {
     let value = (obj as HTMLInputElement).value
     let productSelected = this.productList?.filter(product => product.productId === value)[0]
     this.formData.productId = productSelected?.productId
-    this.formData.itemName = productSelected?.productName + ' '+ productSelected?.productBrand
+    this.formData.itemName = productSelected?.productName + ' ' + productSelected?.productBrand
   }
 
   saveItem() {
-    this.save.emit(this.formData)
+    this.save.emit({ item: this.formData, op: this.operation })
     this.formData = new Item
     this.selectedItemId = ""
+    this.operation = 0
   }
 
   resetForm() {
@@ -42,6 +46,14 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.newFormData.currentValue) {
+      this.selectedItemId = this.newFormData?.productId || ""
+      this.formData = changes.newFormData.currentValue
+      this.operation = 1
+    }
   }
 
 }

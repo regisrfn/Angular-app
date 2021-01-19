@@ -13,6 +13,9 @@ import { OrderService } from './shared/order.service';
 import { PopUpOrderComponent } from './pop-up-order/pop-up-order.component';
 import { NotificationComponent } from './notification/notification.component';
 import { ItemComponent } from './item/item.component';
+import { ItemService } from './shared/item.service';
+import { ProductService } from './shared/product.service';
+import { CustomerService } from './shared/customer.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,7 @@ import { ItemComponent } from './item/item.component';
     HttpClientModule,
     InlineSVGModule.forRoot()
   ],
-  providers: [OrderService],
+  providers: [OrderService,ItemService,ProductService,CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
