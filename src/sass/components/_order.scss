@@ -18,11 +18,7 @@
 
         .form-content {
             width: 50%;
-            @media only screen and (max-width: $SMALL-DEV) {
-                width: 100%;
-                padding-right: 0;
-                padding-left: 0;
-            }
+            flex-wrap: wrap;
             display: flex;
             align-items: center;
             padding: 2rem 3rem;
@@ -37,12 +33,17 @@
                 border-radius: 3px;
                 background-color: $grey-lighten-5;
             }
+
+            @media only screen and (max-width: $SMALL-DEV) {
+                padding: 2rem 0rem;
+                width: 100%;
+            }
         }
 
         .form-item {
             &__input {
                 padding: 0.5rem 1rem;
-                width: 63%;
+                width: 100%;
                 border: 2px solid rgba($grey-lighten-1, 1);
                 border-radius: 2px;
             }
@@ -54,10 +55,12 @@
                 width: 30%;
             }
             &__icon {
+                margin-bottom: 0.5rem;
                 margin-right: 0.5rem;
-                width: 7%;
+                width: 4rem;
+                height: 4rem;
                 fill: $red-accent-3;
-                flex-shrink: 1;
+                flex-shrink: 0;
             }
         }
 

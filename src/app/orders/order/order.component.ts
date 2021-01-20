@@ -28,11 +28,11 @@ export class OrderComponent implements OnInit {
 
   }
   formIcons = {
-    orderId: '../../../assets/svg/user.svg',
-    orderNumber: '../../../assets/svg/user.svg',
-    customerId: '../../../assets/svg/user.svg',
+    orderId: '../../../assets/svg/sent.svg',
+    orderNumber: '../../../assets/svg/numbers-sequence-verification-symbol.svg',
+    customerId: '../../../assets/svg/message.svg',
     orderPaymentMethod: '../../../assets/svg/cards.svg',
-    orderTotalValue: '../../../assets/svg/user.svg'
+    orderTotalValue: '../../../assets/svg/money.svg'
   }
 
   selectedValue = {
