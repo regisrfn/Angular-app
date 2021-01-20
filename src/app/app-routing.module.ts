@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { OrderComponent } from './orders/order/order.component';
 import { OrdersComponent } from './orders/orders.component';
 
-const routes: Routes = [{ path: 'orders', component: OrdersComponent },
-{
-  path: 'order', children: [
-    { path: '', component: OrderComponent },
-    { path: 'edit', component: OrderComponent }
-  ]
-}];
+const routes: Routes = [
+  { path: '', component: OrdersComponent },
+  {
+    path: 'order', children: [
+      { path: '', component: OrderComponent },
+      { path: 'edit', component: OrderComponent }
+    ]
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
