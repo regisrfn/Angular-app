@@ -3,7 +3,7 @@
 
         <div class="form-content">
             <div class="form-item__icon" [inlineSVG]="formIcons.customerId"></div>
-            <label for="" class="form-item__label"> {{formLabels.customerId}}</label>
+            <label class="form-item__label"> {{formLabels.customerId}}</label>
             <input type="text" list="customerId" class="form-item__input" placeholder="Search"
                 [(ngModel)]="selectedValue.customerId" name="customerId" (blur)="selectClient($event.target)">
             <datalist id="customerId" name="customerId">
@@ -17,7 +17,7 @@
 
         <div class="form-content">
             <div class="form-item__icon" [inlineSVG]="formIcons.orderPaymentMethod"></div>
-            <label for="" class="form-item__label"> {{formLabels.orderPaymentMethod}}</label>
+            <label class="form-item__label"> {{formLabels.orderPaymentMethod}}</label>
             <select class="form-item__input" name="orderPaymentMethod" id="orderPaymentMethod"
                 [(ngModel)]="selectedValue.orderPaymentMethod" (change)="selectPaymentMethod()">
                 <option *ngFor="let option of options.orderPaymentMethod;" [value]="option.type">{{option.type}}
@@ -30,7 +30,7 @@
                 *ngIf="item.key !== ('orderPaymentMethod' || null) && item.key !== ('customerId' || null)  && item.key !== ('orderCreatedAt'|| null)">
                 <div class="form-content">
                     <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
-                    <label for="" class="form-item__label"> {{formLabels[item.key]}}</label>
+                    <label class="form-item__label"> {{formLabels[item.key]}}</label>
                     <input class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]"
                         [readonly]="item.key ===  ('orderNumber'  || null) || item.key ===  ('orderTotalValue' || null)  || item.key ===  ('orderId' || null)">
                 </div>

@@ -14,6 +14,10 @@ export class OrderService {
 
   constructor(private http:HttpClient) { }
 
+  getAll(){
+    return this.http.get(environment.apiOrder).toPromise();
+  }
+
   save(order:Order){
     return this.http.post(environment.apiOrder,order).toPromise();
   }

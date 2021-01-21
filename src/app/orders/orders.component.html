@@ -1,1 +1,28 @@
-<p>orders works!</p>
+<div class="orders">
+    <h1>ORDERS</h1>
+    <table>
+        <thead>
+            <th>Order Nº</th>
+            <th>Total</th>
+            <th>Customer name</th>
+            <th>Date</th>
+            <th>
+                Modify
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let order of ordersList;index as itemIndex; trackBy:trackByFn">
+                <td>{{order.orderNumber}}</td>
+                <td>{{order.orderTotalValue}}</td>
+                <td>{{order.customerId}}</td>
+                <td>{{order.orderCreatedAt | date:'dd/MM/yy | HH:mm:ss'}}</td>
+                <td>
+                    <div>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </td>                
+            </tr>
+        </tbody>
+    </table>
+</div>
