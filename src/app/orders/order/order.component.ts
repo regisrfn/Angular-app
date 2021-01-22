@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Customer } from 'src/app/shared/customer.model';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { Item } from 'src/app/shared/item.model';
 import { ItemService } from 'src/app/shared/item.service';
@@ -88,6 +89,7 @@ export class OrderComponent implements OnInit {
       orderPaymentMethod: undefined,
       orderTotalValue: 0.0,
       orderCreatedAt: undefined,
+      customer: undefined,
     }
     this.service.itemList = []
   }

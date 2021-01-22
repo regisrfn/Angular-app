@@ -27,12 +27,12 @@
 
         <ng-container *ngFor="let item of service.formData | keyvalue;  trackBy:trackByFn">
             <ng-container
-                *ngIf="item.key !== ('orderPaymentMethod' || null) && item.key !== ('customerId' || null)  && item.key !== ('orderCreatedAt'|| null)">
+                *ngIf="item.key !== ('orderPaymentMethod' || undefined) && item.key !== ('customerId' || undefined)   && item.key !== ('customer'|| undefined)  && item.key !== ('orderCreatedAt'|| undefined)" >
                 <div class="form-content">
                     <div class="form-item__icon" [inlineSVG]="formIcons[item.key]"></div>
                     <label class="form-item__label"> {{formLabels[item.key]}}</label>
                     <input class="form-item__input" name="{{item.key}}" [(ngModel)]="service.formData[item.key]"
-                        [readonly]="item.key ===  ('orderNumber'  || null) || item.key ===  ('orderTotalValue' || null)  || item.key ===  ('orderId' || null)">
+                        [readonly]="item.key ===  ('orderNumber'  || undefined) || item.key ===  ('orderTotalValue' || undefined)  || item.key ===  ('orderId' || undefined)">
                 </div>
             </ng-container>
         </ng-container>

@@ -1,8 +1,8 @@
 export class Customer {
-    customerId:String | undefined;
-    customerName: String | undefined;
-    customerLastName: String | undefined;
-    customerPhone: String | undefined;
-    customerEmail: String | undefined;
-    customerCreatedAt: String | undefined;    
+    customerId:string | undefined;
+    customerName: string | undefined;
+    customerLastName: string | undefined;
+    customerPhone: string | undefined;
+    customerEmail: string | undefined;
+    customerCreatedAt: string | undefined;    
 }

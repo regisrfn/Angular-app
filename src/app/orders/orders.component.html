@@ -14,14 +14,14 @@
             <tr *ngFor="let order of ordersList;index as itemIndex; trackBy:trackByFn">
                 <td>{{order.orderNumber}}</td>
                 <td>{{order.orderTotalValue}}</td>
-                <td>{{order.customerId}}</td>
+                <td>{{order.customer?.customerName}} {{order.customer?.customerLastName}}</td>
                 <td>{{order.orderCreatedAt | date:'dd/MM/yy | HH:mm:ss'}}</td>
                 <td>
                     <div>
                         <button>Edit</button>
                         <button>Delete</button>
                     </div>
-                </td>                
+                </td>
             </tr>
         </tbody>
     </table>
