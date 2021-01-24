@@ -17,11 +17,15 @@
                     </option>
                 </ng-container>
             </datalist>
-            
-            <input type="text" class="item__field" placeholder="Price $" [(ngModel)]="formData.itemPrice">
-            <input type="text" class="item__field" placeholder="Quantity" [(ngModel)]="formData.itemQuantity">
+
+            <input type="number" class="item__field" placeholder="Unit price $" [(ngModel)]="formData.itemPrice" step=".01" readonly>
+
+            <input type="number" class="item__field" placeholder="Quantity" [(ngModel)]="formData.itemQuantity" min="1">
+
             <input type="text" class="item__field" placeholder="Code" [(ngModel)]="formData.itemCode">
+
             <input type="text" class="item__field" placeholder="Discount" [(ngModel)]="formData.itemDescription">
+
             <textarea type="text" class="item__field area" placeholder="Description $"
                 [(ngModel)]="formData.itemDescription"></textarea>
 

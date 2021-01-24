@@ -32,20 +32,22 @@ export class ItemComponent implements OnInit {
     let productSelected = this.productList?.filter(product => product.productId === value)[0]
     this.formData.productId = productSelected?.productId
     this.formData.itemName = productSelected?.productName + ' ' + productSelected?.productBrand
+    this.formData.itemPrice = productSelected?.productPrice || 0
   }
 
   saveItem() {
     this.save.emit({ item: this.formData, op: this.operation })
-    this.formData = new Item
-    this.selectedItemId = ""
+    this.setForm()
     this.operation = 0
   }
 
-  resetForm() {
+  setForm() {
     this.formData = new Item
+    this.selectedItemId = ""
   }
 
   ngOnInit(): void {
+    this.setForm()
   }
 
   ngOnChanges(changes: SimpleChanges): void {

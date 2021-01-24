@@ -122,7 +122,7 @@ export class OrderComponent implements OnInit {
 
   onAddItem(el: { item: Item, op: number }) {
     el.item.orderId = this.service.formData.orderId
-
+    
     switch (el.op) {
       case 0:
         this.service.itemList.push(el.item)
@@ -134,6 +134,15 @@ export class OrderComponent implements OnInit {
       default:
         break;
     }
+
+    let total = 0;
+    this.service.itemList.forEach (item => {
+      let price = item.itemPrice || 0
+      let qnt = item.itemQuantity || 0
+      total += price * qnt
+    })
+
+    this.service.formData.orderTotalValue = total
 
   }
 
