@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Item } from './item.model';
+import { Notification } from './notification.model';
 import { Order } from './order.model';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { Order } from './order.model';
 })
 export class OrderService {
 
+  @Output() createdOrder: EventEmitter<Notification> = new EventEmitter();
   formData: Order = new Order;
   itemList: Item[] = [];
 

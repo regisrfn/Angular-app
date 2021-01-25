@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Customer } from 'src/app/shared/customer.model';
 import { CustomerService } from 'src/app/shared/customer.service';
 import { Item } from 'src/app/shared/item.model';
@@ -14,9 +15,6 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class OrderComponent implements OnInit {
 
-  isOrderCreated = false
-  message: string = ""
-  msgType: string = ""
   item: Item | undefined
   index = 0
 
@@ -55,7 +53,8 @@ export class OrderComponent implements OnInit {
 
   constructor(public service: OrderService,
     private customerService: CustomerService,
-    public itemService: ItemService) {
+    public itemService: ItemService,
+    private router: Router) {
     this.selectedValue['orderPaymentMethod'] = this.options['orderPaymentMethod'][0]['type']
 
   }
@@ -95,9 +94,11 @@ export class OrderComponent implements OnInit {
   }
 
   saveOrder() {
-    this.isOrderCreated = false
-    this.message = ""
-    this.msgType = ""
+    this.service.createdOrder.emit({
+      show: false,
+      msg: "",
+      type: ""
+    })
 
     let order = this.service.formData
     let itemsList = this.service.itemList
@@ -106,23 +107,30 @@ export class OrderComponent implements OnInit {
     this.service.save(order)
       .then(() => Promise.all(itemsList.map(saveItem, this.itemService)))
       .then(() => {
-        this.isOrderCreated = true
-        this.message = "Order has been created."
-        this.msgType = "successfully"
+        this.service.createdOrder.emit({
+          show: true,
+          msg: "Order has been created.",
+          type: "successfully"
+        })
+      })
+      .then(() => {
+        this.router.navigate([`order/${order.orderId}`])
       })
       .catch(err => {
         if (err.url === environment.apiItem) {
           this.service.delete(order.orderId)
         }
-        this.isOrderCreated = true
-        this.message = "Error on creating order."
-        this.msgType = "error"
+        this.service.createdOrder.emit({
+          show: true,
+          msg: "Error on creating order.",
+          type: "error"
+        })
       })
   }
 
   onAddItem(el: { item: Item, op: number }) {
     el.item.orderId = this.service.formData.orderId
-    
+
     switch (el.op) {
       case 0:
         this.service.itemList.push(el.item)
@@ -135,14 +143,7 @@ export class OrderComponent implements OnInit {
         break;
     }
 
-    let total = 0;
-    this.service.itemList.forEach (item => {
-      let price = item.itemPrice || 0
-      let qnt = item.itemQuantity || 0
-      total += price * qnt
-    })
-
-    this.service.formData.orderTotalValue = total
+    this.updateTotalValue();
 
   }
 
@@ -151,8 +152,32 @@ export class OrderComponent implements OnInit {
     this.item = this.service.itemList[index]
   }
 
+  deleteItem(index: number) {
+    this.service.itemList.splice(index, 1)
+    this.item = undefined
+
+    let total = 0;
+    this.service.itemList.forEach(item => {
+      let price = item.itemPrice || 0
+      let qnt = item.itemQuantity || 0
+      total += price * qnt
+    })
+    this.service.formData.orderTotalValue = total
+  }
+
   trackByFn(index: any, item: any) {
     return index
+  }
+
+  private updateTotalValue() {
+    let total = 0;
+    this.service.itemList.forEach(item => {
+      let price = item.itemPrice || 0;
+      let qnt = item.itemQuantity || 0;
+      total += price * qnt;
+    });
+
+    this.service.formData.orderTotalValue = total;
   }
 
 }
