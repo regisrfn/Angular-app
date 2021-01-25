@@ -8,10 +8,14 @@ import { Item } from './item.model';
 })
 export class ItemService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  saveItem(item:Item){
-    return this.http.post(environment.apiItem,item).toPromise()
+  saveItem(item: Item) {
+    return this.http.post(environment.apiItem, item).toPromise()
+  }
+
+  getItemsFromOrder(orderId: string) {
+    return this.http.get(environment.apiItem + `/order/${orderId}`).toPromise()
   }
 
 }

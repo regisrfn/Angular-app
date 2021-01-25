@@ -1,0 +1,68 @@
+<div class="order-detail">
+    <ng-container *ngIf="order">
+        <h1>ORDER: {{order.orderId}}</h1>
+        <table>
+            <thead>
+                <th>Number</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Date</th>
+                <th>
+                    Modify
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{order.orderNumber}}</td>
+                    <td>{{order.orderTotalValue}}</td>
+                    <td>{{order.orderPaymentMethod}}</td>
+                    <td>{{order.orderCreatedAt | date:'dd/MM/yy | HH:mm:ss'}}</td>
+                    <td>
+                        <div>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-container *ngIf="itemsList.length > 0">
+        <h1>ITEMS:</h1>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemsList; trackBy:trackByFn">
+                    <td>{{item.itemName}}</td>
+                    <td>{{item.itemPrice}}</td>
+                    <td>{{item.itemQuantity}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-container *ngIf="order.customer">
+        <h1>CLIENT: {{order.customer?.customerId}}</h1>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{order.customer?.customerName}}</td>
+                    <td>{{order.customer?.customerLastName}}</td>
+                    <td>{{order.customer?.customerPhone}}</td>
+                    <td>{{order.customer?.customerEmail}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>

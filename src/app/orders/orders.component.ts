@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Customer } from '../shared/customer.model';
 import { CustomerService } from '../shared/customer.service';
 import { Order } from '../shared/order.model';
@@ -14,7 +15,8 @@ export class OrdersComponent implements OnInit {
   customersList: Customer[] = []
 
   constructor(private orderService: OrderService,
-    private customerService: CustomerService) { }
+    private customerService: CustomerService, 
+    private router:Router) { }
 
   ngOnInit(): void {
     this.setOrdersList()
@@ -26,6 +28,13 @@ export class OrdersComponent implements OnInit {
         this.ordersList = ordersList as Order[]
       })
       .catch(err => { })
+  }
+
+  navigateToOrder(orderId:string | undefined){
+    if(orderId){
+      this.router.navigate([`order/${orderId}`])      
+    }
+
   }
 
   trackByFn(index: any, item: any) {

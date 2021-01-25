@@ -14,11 +14,18 @@
 
         tr {
             background-color: $grey-lighten-3;
+            cursor: pointer;
+            &:hover {
+                background-color: rgba($color: $grey-lighten-1, $alpha: 0.5);
+                transform: translateY(-0.1rem);
+            }
         }
 
         tr:nth-child(even) {
             background-color: $grey-lighten-4;
+            &:hover {
+                background-color: rgba($color: $grey-lighten-1, $alpha: 0.5);
+            }
         }
-
     }
 }

@@ -16,6 +16,7 @@ import { ItemComponent } from './item/item.component';
 import { ItemService } from './shared/item.service';
 import { ProductService } from './shared/product.service';
 import { CustomerService } from './shared/customer.service';
+import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CustomerService } from './shared/customer.service';
     HeaderComponent,
     PopUpOrderComponent,
     NotificationComponent,
-    ItemComponent
+    ItemComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

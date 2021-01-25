@@ -12,17 +12,21 @@ export class OrderService {
   formData: Order = new Order;
   itemList: Item[] = [];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAll(){
+  getAll() {
     return this.http.get(environment.apiOrder).toPromise();
   }
 
-  save(order:Order){
-    return this.http.post(environment.apiOrder,order).toPromise();
+  getOne(id: string) {
+    return this.http.get(environment.apiOrder + `/${id}`).toPromise()
   }
 
-  delete(id:string | undefined){
-    return this.http.delete(environment.apiOrder+`/${id}`).toPromise()
+  save(order: Order) {
+    return this.http.post(environment.apiOrder, order).toPromise();
+  }
+
+  delete(id: string | undefined) {
+    return this.http.delete(environment.apiOrder + `/${id}`).toPromise()
   }
 }
