@@ -17,6 +17,7 @@ export class OrderComponent implements OnInit {
 
   item: Item | undefined
   index = 0
+  creatingOrder = false
 
   formLabels = {
     orderId: "Order ID:",
@@ -99,6 +100,7 @@ export class OrderComponent implements OnInit {
       msg: "",
       type: ""
     })
+    this.creatingOrder = true
 
     let order = this.service.formData
     let itemsList = this.service.itemList
@@ -112,6 +114,7 @@ export class OrderComponent implements OnInit {
           msg: "Order has been created.",
           type: "successfully"
         })
+        this.creatingOrder = false
       })
       .then(() => {
         this.router.navigate([`order/${order.orderId}`])
@@ -125,6 +128,7 @@ export class OrderComponent implements OnInit {
           msg: "Error on creating order.",
           type: "error"
         })
+        this.creatingOrder = false
       })
   }
 
@@ -156,13 +160,7 @@ export class OrderComponent implements OnInit {
     this.service.itemList.splice(index, 1)
     this.item = undefined
 
-    let total = 0;
-    this.service.itemList.forEach(item => {
-      let price = item.itemPrice || 0
-      let qnt = item.itemQuantity || 0
-      total += price * qnt
-    })
-    this.service.formData.orderTotalValue = total
+    this.updateTotalValue()
   }
 
   trackByFn(index: any, item: any) {

@@ -78,6 +78,6 @@
     <ng-container *ngIf="service.itemList.length === 0 ">
         <h1>No items</h1>
     </ng-container>
-
+    <app-loader *ngIf="creatingOrder"></app-loader>
     <app-pop-up-order (save)="onAddItem($event)" [data]="item"></app-pop-up-order>
 </div>

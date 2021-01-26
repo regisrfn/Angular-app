@@ -17,6 +17,7 @@ import { ItemService } from './shared/item.service';
 import { ProductService } from './shared/product.service';
 import { CustomerService } from './shared/customer.service';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
     PopUpOrderComponent,
     NotificationComponent,
     ItemComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
