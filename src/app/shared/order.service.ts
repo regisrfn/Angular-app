@@ -20,6 +20,10 @@ export class OrderService {
     return this.http.get(environment.apiOrder).toPromise();
   }
 
+  getPage(pageNumber: number, pageSize = 10) {
+    return this.http.get(`${environment.apiOrder}/page?number=${pageNumber}&size=${pageSize}`).toPromise();
+  }
+
   getOne(id: string) {
     return this.http.get(environment.apiOrder + `/${id}`).toPromise()
   }

@@ -26,4 +26,14 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="nav-buttons" *ngIf="(page.totalPages > 1)">
+        <a (click)="previousPage()" class="previous" *ngIf="page.pageNumber > 0">
+            &laquo; Previous
+        </a>
+        <a (click)="nextPage()" class="next" *ngIf="page.pageNumber < page.totalPages-1">
+            Next &raquo;
+        </a>
+    </div>
+
 </div>

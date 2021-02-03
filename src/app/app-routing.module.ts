@@ -5,12 +5,16 @@ import { OrderComponent } from './orders/order/order.component';
 import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
-  { path: '', component: OrdersComponent },
+  {
+    path: 'orders', children: [
+      { path: ':pageNumber', component: OrdersComponent }
+    ]
+  },
   {
     path: 'order', children: [
       { path: '', component: OrderComponent },
       { path: 'edit', component: OrderComponent },
-      { path: ':id', component: OrderDetailComponent}
+      { path: ':id', component: OrderDetailComponent }
     ]
   }];
 
