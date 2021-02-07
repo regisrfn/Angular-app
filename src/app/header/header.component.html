@@ -9,7 +9,7 @@
     <nav>
         <ul class="header__links hidden-menu" [ngClass]="{ checked: isChecked }">
             <li>
-                <a [routerLink]="[ '/order']">order</a>
+                <a [routerLink]="[ '/order']" (click)="isChecked=false;clicked(line)">order</a>
             </li>
             <li>
                 <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular"
